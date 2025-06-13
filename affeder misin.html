@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beni Affeder Misin?</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    .title {
+      font-size: 32px;
+      margin-bottom: 30px;
+      color: #333;
+    }
+
+    .button {
+      padding: 15px 30px;
+      font-size: 20px;
+      margin: 10px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    #yesButton {
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    #noButton {
+      background-color: #f44336;
+      color: white;
+    }
+
+    #message {
+      font-size: 28px;
+      color: #333;
+      display: none;
+      text-align: center;
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="main">
+    <div class="title">Beni affeder misin?</div>
+    <button id="yesButton" class="button">Affediyorum</button>
+    <button id="noButton" class="button">Affetmiyorum</button>
+  </div>
+  <div id="message">Teşekkür ederim prensesim 💖</div>
+
+  <script>
+    const yesButton = document.getElementById('yesButton');
+    const noButton = document.getElementById('noButton');
+    const main = document.getElementById('main');
+    const message = document.getElementById('message');
+
+    let noClickCount = 0;
+
+    noButton.addEventListener('click', () => {
+      noClickCount++;
+      const scale = 1 + noClickCount * 0.2;
+      yesButton.style.transform = `scale(${scale})`;
+
+      if (noClickCount >= 5) {
+        yesButton.style.position = 'fixed';
+        yesButton.style.top = '0';
+        yesButton.style.left = '0';
+        yesButton.style.width = '100vw';
+        yesButton.style.height = '100vh';
+        yesButton.style.fontSize = '40px';
+        yesButton.style.borderRadius = '0';
+        noButton.style.display = 'none';
+      }
+    });
+
+    yesButton.addEventListener('click', () => {
+      main.style.display = 'none';
+      message.style.display = 'block';
+    });
+  </script>
+</body>
+</html>
